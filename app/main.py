@@ -49,7 +49,7 @@ if __name__ == "__main__":
             scale = DymoScale()
             if scale.connect():
                 break
-            broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage nicht verbunden!"})
+            broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage ausgeschaltet oder nicht verbunden!"})
             time.sleep(1)
 
         broadcast({"status": "ok", "weight": 0})
@@ -62,7 +62,7 @@ if __name__ == "__main__":
             except Exception as ex:
                 print(f"Read error: {ex}")
                 scale.disconnect()
-                broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage nicht verbunden!"})
+                broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage ausgeschaltet oder nicht verbunden!"})
                 break
 
             if report is None:
@@ -70,7 +70,7 @@ if __name__ == "__main__":
                 # (e.g. powered off or weight unchanged). Notify once.
                 if not timed_out:
                     timed_out = True
-                    broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage nicht verbunden!"})
+                    broadcast({"status": "error", "code": "NO_SCALE", "description": "Waage ausgeschaltet oder nicht verbunden!"})
                 continue
 
             timed_out = False

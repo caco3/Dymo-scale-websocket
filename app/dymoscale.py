@@ -159,7 +159,7 @@ class DymoScale():
             # and this avoids fractional output when the scale reports oz/lb)
             return {"weight": round(grams)}
         elif status == STATUS_OVER_LIMIT:
-            return {"code": "OVERLOAD", "description": "Ueberlast!"}
+            return {"code": "OVERLOAD", "description": "Überlast!"}
         else:
             print(f"Scale status: {status_name} (report: {data.hex()})")
             return None

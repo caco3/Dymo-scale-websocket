@@ -16,9 +16,9 @@ See https://github.com/caco3/Dymo-M10-scale-without-power-off for details.
 ## Protocol
 
 - `{"status": "ok", "weight": <grams>}`
-- `{"status": "error", "code": "NO_SCALE", "description": "Waage nicht verbunden!"}`
+- `{"status": "error", "code": "NO_SCALE", "description": "Waage ausgeschaltet oder nicht verbunden!"}`
 - `{"status": "error", "code": "NO_DATA", "description": "Keine Daten verfügbar!"}`
-- `{"status": "error", "code": "OVERLOAD", "description": "Ueberlast!"}`
+- `{"status": "error", "code": "OVERLOAD", "description": "Überlast!"}`
 
 Note: the DYMO only sends HID reports when the weight changes. If the scale is
 powered off or silent for >2 s, `NO_SCALE` is broadcast once.
