@@ -10,7 +10,7 @@ reports from `/dev/hidraw*` (it finds the first HID node with VID `0922`).
 
 Note: The M10 normally auto-sleeps after ~3 min without a button press or weight
 change and stops enumerating — it must be powered on again with its POWER
-button. To work around this, the scale got modified to toggle the unit (kg/lb) twice every 2.5 minutes.
+button. To work around this, the scale can be modified to toggle the unit (kg/lb) twice every 2.5 minutes.
 See https://github.com/caco3/Dymo-M10-scale-without-power-off for details.
 
 ## Protocol
