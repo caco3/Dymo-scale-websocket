@@ -31,9 +31,18 @@ docker compose up -d --build --remove-orphans
 
 ## Logfile
 
-A log file is written to `/tmp/scale-gateway-dymo`.
-You can monitor it with `tail -F /tmp/scale-gateway-dymo/scale.log`
+A log file is written to `Dymo-Waage/log/scale.log` (bind-mounted to
+`/app/log` in the container; persists across reboots).
+You can monitor it with `tail -F Dymo-Waage/log/scale.log`
 (It is buffered and thus delayed).
+
+Every state change (weight or error) is logged with a timestamp;
+repeated identical messages are suppressed, e.g.
+
+```
+2026-11-08 23:45:12 {"status": "ok", "weight": 123}
+2026-11-08 23:46:01 {"status": "error", "code": "NO_SCALE", "description": "Waage ausgeschaltet oder nicht verbunden!"}
+```
 
 ## Troubleshooting
 

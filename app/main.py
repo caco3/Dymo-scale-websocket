@@ -6,6 +6,8 @@ from simple_websocket_server import WebSocketServer, WebSocket
 
 READ_TIMEOUT = 2.0  # seconds without a report before we report NO_SCALE
 
+last_logged = None  # last state written to the log, for change-only logging
+
 
 class myWebsocketServer(WebSocket):
     def handle(self):
@@ -28,7 +30,12 @@ def run_server():
 
 
 def broadcast(d):
+    """Send d to all clients and log state changes (weight or error) once."""
+    global last_logged
     msg = json.dumps(d)
+    if d != last_logged:
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} {msg}")
+        last_logged = d
     for client in clients:
         try:
             client.send_message(msg)
